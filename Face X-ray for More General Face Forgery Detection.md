@@ -6,7 +6,7 @@
 
 ## 主要内容
 
-![](/home/zwplus/.config/marktext/images/2022-11-20-00-37-08-image.png)
+<img src="file:///home/zwplus/文档/blog/paper-blog/img/face%20X-ray/选区_001.png" title="" alt="" data-align="center">
 
 **概述**：
 
@@ -22,7 +22,7 @@
 
 ### Face X-ray
 
-![](/home/zwplus/.config/marktext/images/2022-11-20-22-23-23-image.png)
+![](/home/zwplus/文档/blog/paper-blog/img/face%20X-ray/选区_002.png)
 
 #### 伪造图片生成
 
@@ -35,7 +35,7 @@ $$
 
 #### Face X-ray
 
-<img src="file:///home/zwplus/.config/marktext/images/2022-11-20-22-43-31-image.png" title="" alt="" data-align="center">
+<img src="file:///home/zwplus/文档/blog/paper-blog/img/face%20X-ray/选区_003.png" title="" alt="" data-align="center">
 
 这里将图片的Face X-ray定义为图片$B$，其中每个像素的值如下:
 
@@ -95,21 +95,21 @@ $M$是从输入的图片中提取的掩码，对于真实输入图片而言，�
 
 作者首先使用HRnet网络去预测融合边界$B^-$，然后再在$B^-$上使用全局池化和全连接层来预测最终真伪结果，作者使用$L=aL_b+L_c$来作为损失函数，其中$L_c$是二分类损失，用来计算真伪的预测损失，而$L_b$则是用来评估融合边界的预测损失：
 
-<img src="file:///home/zwplus/.config/marktext/images/2022-11-21-01-15-07-image.png" title="" alt="" data-align="center">
+<img src="file:///home/zwplus/文档/blog/paper-blog/img/face%20X-ray/选区_004.png" title="" alt="./img/face X-ray/选区_004.png" data-align="center">
 
 其主要计算对应位置上差异来比较预测的融合边界的精确度，实验过程a=100来强迫网络去学习预测Face X-ray。
 
 ## 实验结果
 
-<img src="file:///home/zwplus/.config/marktext/images/2022-11-21-01-20-44-image.png" title="" alt="" data-align="center">
+<img src="file:///home/zwplus/文档/blog/paper-blog/img/face%20X-ray/选区_005.png" title="" alt="" data-align="center">
 
 不同的网络在使用相同训练集进行训练的情况下泛化性情况，可以看到作者提出的Face X-ray方法具备了最佳的泛化性能。需要说明的是在使用Face X-ray时，对于FF++这类伪造数据集时，使用真实图片来作为背景图片，使用伪造图片来作为前景图片，以此生成训练数据。**表中的BI数据集是作者只使用真实图片来进行融合操作生成的数据集**，我们可以看到在同时使用该数据集来训练的情况下，不同方法都取得很高的泛化性，这可能是因为训练数据导致三种方法的都趋向于对融合边界这个特征进行识别，即Xception和HRnet和Face X-ray学习到了类似的特征模式。
 
-<img src="file:///home/zwplus/.config/marktext/images/2022-11-21-01-34-34-image.png" title="" alt="" data-align="center">
+![](/home/zwplus/文档/blog/paper-blog/img/face%20X-ray/选区_006.png)
 
 使用FF++和BI作为训练集，在当前主流的其他数据上的训练结果，Face X-ray方法依旧表现出了优异的泛化性能。
 
-<img src="file:///home/zwplus/.config/marktext/images/2022-11-21-01-37-39-image.png" title="" alt="" data-align="center">
+<img src="file:///home/zwplus/文档/blog/paper-blog/img/face%20X-ray/选区_007.png" title="" alt="" data-align="center">
 
 表4中作者比较了一下掩码区域的随机变形（仿射变换）和颜色矫正对于方法性能的影响；表5比较了使用损失函数中使用不同的a对于最终结果的影响；表6则比较了在融合过程使用不同融合方式生成相应的训练数据对模型性能的影响。
 
